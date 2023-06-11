@@ -7,11 +7,9 @@ namespace IMoreno.FunctionalExercises.BMI.Tests
         [Fact]
         public void Display_underweight_if_BMI_is_under_minimum()
         {
-            var sut = new BodyMassIndex();
+            var sut = new BodyMassIndex(weight: 100, height: 2);
 
-            sut.Of(weight: 100, height: 2)
-               .Should()
-               .Be("Underweight");
+            sut.Diagnostic.Should().Be("Underweight");
         }
     }
 }

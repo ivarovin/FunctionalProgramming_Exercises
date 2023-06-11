@@ -1,10 +1,7 @@
 ﻿namespace IMoreno.FunctionalExercises.BMI
 {
-    public class BodyMassIndex
+    public record BodyMassIndex(int weight, int height)
     {
-        public string Of(int weight, int height)
-        {
-            return "Underweight";
-        }
+        public string Diagnostic => "Underweight";
     }
 }

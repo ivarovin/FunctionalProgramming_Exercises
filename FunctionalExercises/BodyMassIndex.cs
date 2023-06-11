@@ -6,10 +6,10 @@
             => Value switch
             {
                 < 18.5f => "Underweight",
-                > 25f => "Overweight",
+                >= 25f => "Overweight",
                 _ => "Healty"
             };
 
-        float Value => weight / (height * height);
+        double Value => Math.Round(weight / (height * height), 2);
     }
 }

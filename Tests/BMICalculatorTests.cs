@@ -21,6 +21,14 @@ namespace IMoreno.FunctionalExercises.BMI.Tests
         }
 
         [Fact]
+        public void Diagnose_overweight_if_BMI_is_equal_than_maximum()
+        {
+            var sut = new BodyMassIndex(weight: 81, height: 1.8f);
+
+            sut.Diagnostic.Should().Be("Overweight");
+        }
+
+        [Fact]
         public void Diagnose_healty_if_BMI_is_between_bounds()
         {
             var sut = new BodyMassIndex(weight: 80, height: 1.8f);

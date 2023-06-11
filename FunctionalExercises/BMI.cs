@@ -1,6 +1,6 @@
 ﻿namespace IMoreno.FunctionalExercises.BMI
 {
-    public record BodyMassIndex(float weight, float height)
+    public record BMI(float weight, float height)
     {
         public string Diagnostic
             => Value switch
@@ -10,6 +10,6 @@
                 _ => "Healty"
             };
 
-        double Value => Math.Round(weight / (height * height), 2);
+        public double Value => Math.Round(weight / (height * height), 2);
     }
 }

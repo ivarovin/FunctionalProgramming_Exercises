@@ -1,6 +1,6 @@
 ﻿namespace IMoreno.FunctionalExercises.BMI
 {
-    public interface Keyboard
+    public interface Formulary
     {
         string Weight { get; }
         string Height { get; }

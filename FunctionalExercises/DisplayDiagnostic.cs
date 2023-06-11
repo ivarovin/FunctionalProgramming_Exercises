@@ -3,18 +3,20 @@
     public class DisplayDiagnostic
     {
         readonly Screen screen;
-        readonly Keyboard keyboard;
+        readonly Formulary formulary;
 
-        public DisplayDiagnostic(Screen screen, Keyboard keyboard)
+        float Weight => float.Parse(formulary.Weight);
+        float Height => float.Parse(formulary.Height);
+
+        public DisplayDiagnostic(Screen screen, Formulary formulary)
         {
             this.screen = screen;
-            this.keyboard = keyboard;
+            this.formulary = formulary;
         }
 
         public void Execute()
         {
-            var result = new BMI(float.Parse(keyboard.Weight), 
-                                 float.Parse(keyboard.Height));
+            var result = new BMI(Weight, Height);
 
             screen.Display(result.Diagnostic);
         }

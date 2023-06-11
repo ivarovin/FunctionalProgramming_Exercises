@@ -19,5 +19,13 @@ namespace IMoreno.FunctionalExercises.BMI.Tests
 
             sut.Diagnostic.Should().Be("Overweight");
         }
+
+        [Fact]
+        public void Diagnose_healty_if_BMI_is_between_bounds()
+        {
+            var sut = new BodyMassIndex(weight: 80, height: 1.8f);
+
+            sut.Diagnostic.Should().Be("Healty");
+        }
     }
 }

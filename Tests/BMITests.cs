@@ -2,7 +2,7 @@
 
 namespace IMoreno.FunctionalExercises.BMI.Tests
 {
-    public class BMICalculationTests
+    public class BMITests
     {
         [Fact]
         public void Calculate_BMI()

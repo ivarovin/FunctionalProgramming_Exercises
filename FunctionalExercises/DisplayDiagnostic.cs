@@ -16,9 +16,9 @@
 
         public void Execute()
         {
-            var result = new BMI(Weight, Height);
+            var result = new BMIDiagnostic((Weight, Height));
 
-            screen.Display(result.Diagnostic);
+            screen.Display(result.Value);
         }
     }
 }

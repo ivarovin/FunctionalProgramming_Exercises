@@ -1,6 +1,6 @@
 ﻿namespace IMoreno.FunctionalExercises.Optional
 {
-    public record Some<T>
+    public record Some<T> : Option<T>
     {
         readonly T value;
 

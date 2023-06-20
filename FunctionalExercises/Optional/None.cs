@@ -1,4 +1,4 @@
 ﻿namespace IMoreno.FunctionalExercises.Optional
 {
-    public abstract record Option<T> { }
+    public record None<T> : Option<T> { }
 }

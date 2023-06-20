@@ -15,5 +15,17 @@ namespace IMoreno.FunctionalExercises.Optional.Tests
                 )
                 .Should().Be("Test");
         }
+
+        [Fact]
+        public void Returns_none_value_if_null()
+        {
+            new None<string>()
+                .Match
+                (
+                    none: () => "None",
+                    some: value => value
+                )
+                .Should().Be("None");
+        }
     }
 }

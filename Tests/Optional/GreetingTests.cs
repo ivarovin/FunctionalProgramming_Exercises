@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using static IMoreno.FunctionalExercises.Optional.OptionType;
+using FluentAssertions;
 
 namespace IMoreno.FunctionalExercises.Optional.Tests
 {
@@ -13,7 +14,7 @@ namespace IMoreno.FunctionalExercises.Optional.Tests
         [Fact]
         public void Ask_for_someone_when_provide_no_name()
         {
-            new Greeting().For(new None<string>()).Should().Be("Hello?");
+            new Greeting().For(None).Should().Be("Hello?");
         }
     }
 }

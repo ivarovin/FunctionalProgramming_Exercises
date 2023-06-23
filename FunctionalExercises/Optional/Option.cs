@@ -4,5 +4,7 @@
     {
         public static implicit operator Option<T>(T value) =>
             value == null ? new None<T>() : new Some<T>(value);
+
+        public static implicit operator Option<T>(OptionType _) => new None<T>();
     }
 }

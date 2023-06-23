@@ -7,7 +7,7 @@ namespace IMoreno.FunctionalExercises.Optional.Tests
         [Fact]
         public void Greet_Someone_when_provide_name()
         {
-            new Greeting().For(new Some<string>("Test")).Should().Be("Hello, Test");
+            new Greeting().For("Test").Should().Be("Hello, Test");
         }
     }
 }

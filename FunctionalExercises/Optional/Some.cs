@@ -7,7 +7,7 @@
         public Some(T value)
         {
             if (value is null)
-                throw new ArgumentNullException(nameof(value), "It is necessary to pass some value");
+                throw new ArgumentNullException(nameof(value), $"Some value of type {typeof(T)} cannot be null");
 
             this.value = value;
         }

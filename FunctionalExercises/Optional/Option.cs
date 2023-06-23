@@ -2,6 +2,7 @@
 {
     public abstract record Option<T>
     {
-        public static implicit operator Option<T>(T value) => new Some<T>(value);
+        public static implicit operator Option<T>(T value) =>
+            value == null ? new None<T>() : new Some<T>(value);
     }
 }

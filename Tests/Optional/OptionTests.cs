@@ -33,5 +33,12 @@ namespace IMoreno.FunctionalExercises.Optional.Tests
         {
             ((Option<string>)"Test").Should().BeOfType<Some<string>>();
         }
+
+        [Fact]
+        public void Convert_to_null_returns_none_value()
+        {
+            string value = null;
+            ((Option<string>)value).Should().BeOfType<None<string>>();
+        }
     }
 }

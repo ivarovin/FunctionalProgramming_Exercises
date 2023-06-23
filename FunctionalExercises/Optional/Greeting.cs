@@ -5,7 +5,7 @@
         public string For(Option<string> name)
             => name.Match
             (
-                none: () => "",
+                none: () => "Hello?",
                 some: n => $"Hello, {n}"
             );
     }

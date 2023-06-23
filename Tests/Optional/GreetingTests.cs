@@ -9,5 +9,11 @@ namespace IMoreno.FunctionalExercises.Optional.Tests
         {
             new Greeting().For("Test").Should().Be("Hello, Test");
         }
+
+        [Fact]
+        public void Ask_for_someone_when_provide_no_name()
+        {
+            new Greeting().For(new None<string>()).Should().Be("Hello?");
+        }
     }
 }

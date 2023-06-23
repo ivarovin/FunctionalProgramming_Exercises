@@ -27,5 +27,11 @@ namespace IMoreno.FunctionalExercises.Optional.Tests
                 )
                 .Should().Be("None");
         }
+
+        [Fact]
+        public void Convert_to_type_returns_some_value()
+        {
+            ((Option<string>)"Test").Should().BeOfType<Some<string>>();
+        }
     }
 }

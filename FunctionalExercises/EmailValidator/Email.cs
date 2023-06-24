@@ -7,6 +7,7 @@ namespace IMoreno.FunctionalExercises.EmailValidator
         readonly string value;
         Email(string value) => this.value = value;
 
+        public static implicit operator string(Email email) => email.value;
         public static Option<Email> Create(string value) =>
             value.Contains('@') ? new Email(value) : new None<Email>();
     }

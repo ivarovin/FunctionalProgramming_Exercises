@@ -16,5 +16,13 @@ namespace IMoreno.FunctionalExercises.EmailValidator.Tests
         {
             Email.Create("test@").Should().BeOfType<Some<Email>>();
         }
+
+        [Fact]
+        public void Convert_email_to_string_implicitly()
+        {
+            ((Some<Email>)Email.Create("test@")).Deconstruct(out var email);
+
+            ((string)email).Should().Be("test@");
+        }
     }
 }

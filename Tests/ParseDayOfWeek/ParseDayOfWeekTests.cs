@@ -12,5 +12,13 @@ namespace IMoreno.FunctionalExercises.ParseDayOfWeek.Tests
                 .Should()
                 .Be(new Some<DayOfWeek>(DayOfWeek.Friday));
         }
+
+        [Fact]
+        public void Parse_invalid_DayOfWeek_returns_none()
+        {
+            Enum.Parse<DayOfWeek>("FreeDay")
+                .Should()
+                .Be(new None<DayOfWeek>());
+        }
     }
 }

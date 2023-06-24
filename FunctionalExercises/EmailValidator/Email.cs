@@ -2,9 +2,12 @@
 
 namespace IMoreno.FunctionalExercises.EmailValidator
 {
-    public struct Email
+    public readonly struct Email
     {
+        readonly string value;
+        Email(string value) => this.value = value;
+
         public static Option<Email> Create(string value) =>
-            new None<Email>();
+            value.Contains('@') ? new Email(value) : new None<Email>();
     }
 }

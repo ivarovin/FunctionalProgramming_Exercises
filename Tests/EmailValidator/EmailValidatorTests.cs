@@ -10,5 +10,11 @@ namespace IMoreno.FunctionalExercises.EmailValidator.Tests
         {
             Email.Create("invalid").Should().BeOfType<None<Email>>();
         }
+
+        [Fact]
+        public void Create_valid_email()
+        {
+            Email.Create("test@").Should().BeOfType<Some<Email>>();
+        }
     }
 }

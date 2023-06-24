@@ -12,5 +12,13 @@ namespace IMoreno.FunctionalExercises.LookUp.Tests
                 .Should()
                 .BeOfType<None<int>>();
         }
+
+        [Fact]
+        public void Return_value_if_matches_predicate()
+        {
+            new List<int>() { 0 }.LookUp(i => i == 0)
+                .Should()
+                .BeOfType<Some<int>>();
+        }
     }
 }

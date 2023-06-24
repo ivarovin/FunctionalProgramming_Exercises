@@ -1,4 +1,5 @@
-﻿using IMoreno.FunctionalExercises.Optional;
+﻿using static IMoreno.FunctionalExercises.Optional.OptionType;
+using IMoreno.FunctionalExercises.Optional;
 
 namespace IMoreno.FunctionalExercises.LookUp
 {
@@ -6,7 +7,7 @@ namespace IMoreno.FunctionalExercises.LookUp
     {
         public static Option<T> LookUp<T>(this IEnumerable<T> collection, Func<T, bool> predicate)
         {
-            return new None<T>();
+            return collection.Any(predicate) ? collection.First(predicate) : None;
         }
     }
 }

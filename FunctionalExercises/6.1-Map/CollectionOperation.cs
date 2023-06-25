@@ -10,16 +10,12 @@
             }
         }
 
-        public static IDictionary<K, R> Map<K, R, T>(this IDictionary<K, T> d, Func<T, R> opt)
+        public static IEnumerable<KeyValuePair<K, R>> Map<K, R, T>(this IDictionary<K, T> d, Func<T, R> opt)
         {
-            var result = new Dictionary<K, R>();
-
             foreach (var item in d)
             {
-                result.Add(item.Key, opt(item.Value));
+                yield return new(item.Key, opt(item.Value));
             }
-
-            return result;
         }
     }
 }

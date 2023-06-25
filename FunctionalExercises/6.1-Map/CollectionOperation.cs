@@ -4,9 +4,12 @@ namespace IMoreno.FunctionalExercises.Map
 {
     public static class CollectionOperation
     {
-        public static ISet<R> Map<T, R>(this ISet<T> s, Func<T, R> opt)
+        public static IEnumerable<R> Map<T, R>(this ISet<T> set, Func<T, R> opt)
         {
-            return null;
+            foreach (var item in set)
+            {
+                yield return opt(item);
+            }
         }
     }
 }

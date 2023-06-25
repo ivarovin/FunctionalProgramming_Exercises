@@ -1,6 +1,4 @@
-﻿using IMoreno.FunctionalExercises.Optional;
-
-namespace IMoreno.FunctionalExercises.Map
+﻿namespace IMoreno.FunctionalExercises.Map
 {
     public static class CollectionOperation
     {

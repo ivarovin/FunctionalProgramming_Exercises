@@ -13,5 +13,7 @@ namespace IMoreno.FunctionalExercises.BindAndReturn
                     some: value => op(value)
                 );
         }
+
+        public static Option<T> Optionalize<T>(T value) => (Option<T>)value;
     }
 }

@@ -14,6 +14,13 @@ namespace IMoreno.FunctionalExercises.BindAndReturn
                 );
         }
 
+        public static IEnumerable<R> Bind<T, R>(this IEnumerable<T> or, Func<T, IEnumerable<R>> op)
+        {
+            foreach (var item in or)
+                foreach (var result in op(item))
+                    yield return result;
+        }
+
         public static Option<T> Optionalize<T>(T value) => (Option<T>)value;
     }
 }

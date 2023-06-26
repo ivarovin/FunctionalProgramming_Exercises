@@ -19,6 +19,18 @@ namespace IMoreno.FunctionalExercises.BindAndReturn.Tests
         }
 
         [Fact]
+        public void Bind_collections()
+        {
+            List<int> Duplicate(int value) => new List<int> { value * 2 };
+
+            new List<int> { 1, 2, 3 }
+                .Bind(Duplicate)
+                .Bind(Duplicate)
+                .Should()
+                .BeEquivalentTo(new List<int>{ 4, 8, 12 });
+        }
+
+        [Fact]
         public void Elevate_value_to_option()
         {
             Optionalize(1).Should().Be(new Some<int>(1));

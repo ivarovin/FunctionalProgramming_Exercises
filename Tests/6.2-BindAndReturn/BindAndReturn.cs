@@ -27,7 +27,13 @@ namespace IMoreno.FunctionalExercises.BindAndReturn.Tests
                 .Bind(Duplicate)
                 .Bind(Duplicate)
                 .Should()
-                .BeEquivalentTo(new List<int>{ 4, 8, 12 });
+                .BeEquivalentTo(new List<int> { 4, 8, 12 });
+        }
+
+        [Fact]
+        public void Elevate_values_to_collection()
+        {
+            List(1, 2, 3).Should().HaveCount(3);
         }
 
         [Fact]

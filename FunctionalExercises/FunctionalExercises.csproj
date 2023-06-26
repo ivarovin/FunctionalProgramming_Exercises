@@ -7,8 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="6.3-GetWorkPermit\" />
-  </ItemGroup>
-
 </Project>

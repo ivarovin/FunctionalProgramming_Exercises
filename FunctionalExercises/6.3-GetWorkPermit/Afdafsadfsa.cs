@@ -14,7 +14,7 @@ namespace IMoreno.FunctionalExercises.GetWorkPermit
         public Option<WorkPermit> GetWorkPermit(Dictionary<string, Employee> employees, string employeeId)
         {
             bool IsUpToDate(WorkPermit workPermit)
-                => today.Match(() => true, (value) => workPermit.Expiry > value);
+                => today.Match(() => true, (present) => workPermit.Expiry < present);
 
             return employees.LookUp(employeeId)
                             .Bind(e => e.WorkPermit)

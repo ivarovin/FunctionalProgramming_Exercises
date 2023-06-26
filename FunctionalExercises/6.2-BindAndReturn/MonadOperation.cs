@@ -7,13 +7,18 @@ namespace IMoreno.FunctionalExercises.BindAndReturn
     public static class MonadOperation
     {
         public static Option<R> Bind<T, R>(this Option<T> option, Func<T, Option<R>> op)
-        {
-            return option.Match
-                (
-                    none: () => None,
-                    some: value => op(value)
-                );
-        }
+            => option.Match
+            (
+                none: () => None,
+                some: value => op(value)
+            );
+
+        public static Option<T> Where<T>(this Option<T> opt, Func<T, bool> predicate)
+            => opt.Match
+            (
+                () => None,
+                value => predicate(value) ? opt : None
+            );
 
         public static IEnumerable<R> Bind<T, R>(this IEnumerable<T> or, Func<T, IEnumerable<R>> op)
         {

@@ -1,5 +1,6 @@
-﻿using FluentAssertions;
+﻿using static IMoreno.FunctionalExercises.Optional.OptionType;
 using IMoreno.FunctionalExercises.Optional;
+using FluentAssertions;
 
 namespace IMoreno.FunctionalExercises.GetWorkPermit.Tests
 {
@@ -17,6 +18,20 @@ namespace IMoreno.FunctionalExercises.GetWorkPermit.Tests
                 .Match(() => default, result => result)
                 .Should()
                 .Be(workPermit);
+        }
+
+        [Fact]
+        public void Work_permit_is_none_when_expired()
+        {
+            var sut = Afdafsadfsa.ForDay(DateTime.Today);
+            var employees = new Dictionary<string, Employee>();
+            var workPermit = new WorkPermit("1a", DateTime.Today.AddDays(-1));
+            employees.Add("1", new Employee("1", workPermit, DateTime.Now, DateTime.Now));
+
+            sut.GetWorkPermit(employees, "1")
+                .Match(() => false, result => true)
+                .Should()
+                .BeFalse();
         }
     }
 }

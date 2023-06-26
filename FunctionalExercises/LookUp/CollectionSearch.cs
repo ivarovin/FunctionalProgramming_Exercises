@@ -9,5 +9,10 @@ namespace IMoreno.FunctionalExercises.LookUp
         {
             return collection.Any(predicate) ? collection.First(predicate) : None;
         }
+
+        public static Option<T> LookUp<K, T>(this IDictionary<K, T> collection, K key)
+        {
+            return collection.TryGetValue(key, out var result) ? result : None;
+        }
     }
 }

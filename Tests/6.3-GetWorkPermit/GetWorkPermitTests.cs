@@ -14,7 +14,7 @@ namespace IMoreno.FunctionalExercises.GetWorkPermit.Tests
         [Fact]
         public void Get_work_permit_of_employee()
         {
-            new Afdafsadfsa()
+            new CompanyReport()
                 .GetWorkPermit(Employees, "MyId")
                 .Match(() => default, result => result)
                 .Should()
@@ -24,11 +24,23 @@ namespace IMoreno.FunctionalExercises.GetWorkPermit.Tests
         [Fact]
         public void Work_permit_is_none_when_expired()
         {
-            Afdafsadfsa.ForDay(DateTime.Today)
-                       .GetWorkPermit(Employees, "MyId")
-                       .Match(() => false, result => true)
-                       .Should()
-                       .BeFalse();
+            CompanyReport.ForDay(DateTime.Today)
+                         .GetWorkPermit(Employees, "MyId")
+                         .Match(() => false, result => true)
+                         .Should()
+                         .BeFalse();
+        }
+
+        [Fact]
+        public void Work_permit_is_not_expired_if_date_is_over_today()
+        {
+            var yesterday = DateTime.Today.AddDays(-1);
+
+            CompanyReport.ForDay(yesterday)
+                         .GetWorkPermit(Employees, "MyId")
+                         .Match(() => false, result => true)
+                         .Should()
+                         .BeTrue();
         }
     }
 }

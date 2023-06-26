@@ -5,16 +5,16 @@ using IMoreno.FunctionalExercises.Optional;
 
 namespace IMoreno.FunctionalExercises.GetWorkPermit
 {
-    public class Afdafsadfsa
+    public class CompanyReport
     {
         readonly Option<DateTime> today;
-        public Afdafsadfsa() => today = None;
-        Afdafsadfsa(DateTime today) => this.today = today;
+        public CompanyReport() => today = None;
+        CompanyReport(DateTime today) => this.today = today;
 
         public Option<WorkPermit> GetWorkPermit(Dictionary<string, Employee> employees, string employeeId)
         {
             bool IsUpToDate(WorkPermit workPermit)
-                => today.Match(() => true, (present) => workPermit.Expiry < present);
+                => today.Match(() => true, (present) => workPermit.Expiry > present);
 
             return employees.LookUp(employeeId)
                             .Bind(e => e.WorkPermit)
@@ -23,7 +23,7 @@ namespace IMoreno.FunctionalExercises.GetWorkPermit
 
         public double AverageYearsWorkedAtTheCompany(List<Employee> employees) { return 0; } // your implementation here...
 
-        public static Afdafsadfsa ForDay(DateTime theDay) => new Afdafsadfsa(theDay);
+        public static CompanyReport ForDay(DateTime theDay) => new CompanyReport(theDay);
     }
 
     public record Employee

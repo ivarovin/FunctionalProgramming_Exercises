@@ -30,7 +30,8 @@ namespace IMoreno.FunctionalExercises.GetWorkPermit
                     date => new List<double> { (employee.JoinedOn - date).TotalDays }
                 );
 
-            return employees.Bind(TimeAtCompany).Sum();
+            return employees.Bind(TimeAtCompany)
+                            .Sum();
         }
 
         public static CompanyReport ForDay(DateTime theDay) => new CompanyReport(theDay);

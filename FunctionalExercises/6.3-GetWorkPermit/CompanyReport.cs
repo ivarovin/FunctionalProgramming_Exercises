@@ -21,7 +21,17 @@ namespace IMoreno.FunctionalExercises.GetWorkPermit
                             .Where(IsUpToDate);
         }
 
-        public double AverageYearsWorkedAtTheCompany(List<Employee> employees) { return 0; } // your implementation here...
+        public double AverageYearsWorkedAtTheCompany(List<Employee> employees)
+        {
+            List<double> TimeAtCompany(Employee employee)
+                => employee.LeftOn.Match
+                (
+                    () => new List<double> { 0 },
+                    date => new List<double> { (employee.JoinedOn - date).TotalDays }
+                );
+
+            return employees.Bind(TimeAtCompany).Sum();
+        }
 
         public static CompanyReport ForDay(DateTime theDay) => new CompanyReport(theDay);
     }

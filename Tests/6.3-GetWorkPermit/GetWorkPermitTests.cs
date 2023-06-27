@@ -1,14 +1,15 @@
-﻿using IMoreno.FunctionalExercises.Optional;
+﻿using static System.DateTime;
+using IMoreno.FunctionalExercises.Optional;
 using FluentAssertions;
 
 namespace IMoreno.FunctionalExercises.GetWorkPermit.Tests
 {
     public class GetWorkPermitTests
     {
-        WorkPermit WorkPermit => new WorkPermit("1a", DateTime.Today);
+        WorkPermit WorkPermit => new WorkPermit("1a", Today);
         Dictionary<string, Employee> Employees => new()
         {
-            { "MyId", new Employee("1", WorkPermit, DateTime.Today, DateTime.Today) }
+            { "MyId", new Employee("1", WorkPermit, Today, Today) }
         };
 
         [Fact]
@@ -24,7 +25,7 @@ namespace IMoreno.FunctionalExercises.GetWorkPermit.Tests
         [Fact]
         public void Work_permit_is_none_when_expired()
         {
-            CompanyReport.ForDay(DateTime.Today)
+            CompanyReport.ForDay(Today)
                          .GetWorkPermit(Employees, "MyId")
                          .Match(() => false, result => true)
                          .Should()
@@ -34,7 +35,7 @@ namespace IMoreno.FunctionalExercises.GetWorkPermit.Tests
         [Fact]
         public void Work_permit_is_not_expired_if_date_is_over_today()
         {
-            var yesterday = DateTime.Today.AddDays(-1);
+            var yesterday = Today.AddDays(-1);
 
             CompanyReport.ForDay(yesterday)
                          .GetWorkPermit(Employees, "MyId")

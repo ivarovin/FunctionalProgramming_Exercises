@@ -39,8 +39,8 @@ namespace IMoreno.FunctionalExercises.BindAndReturn.Tests
         [Fact]
         public void Elevate_value_to_option()
         {
-            Optionalize(1).Should().Be(new Some<int>(1));
-            Optionalize((string)null).Should().BeOfType<None<string>>();
+            Some(1).Should().Be(new Some<int>(1));
+            Some((string)null).Should().BeOfType<None<string>>();
         }
     }
 }

@@ -23,18 +23,14 @@ namespace IMoreno.FunctionalExercises.GetWorkPermit
 
         public double AverageYearsWorkedAtTheCompany(List<Employee> employees)
         {
+            return employees.Bind(TimeAtCompany).Sum();
+
             List<double> TimeAtCompany(Employee employee)
                 => employee.LeftOn.Match
                 (
                     () => new List<double> { 0 },
                     date => new List<double> { (date - employee.JoinedOn).TotalDays }
                 );
-
-            bool DidLeftCompany(Employee employee) => employee.LeftOn != None;
-
-            return employees.Where(DidLeftCompany)
-                            .Bind(TimeAtCompany)
-                            .Sum();
         }
 
         public static CompanyReport ForDay(DateTime theDay) => new CompanyReport(theDay);

@@ -11,12 +11,12 @@ namespace IMoreno.FunctionalExercises.AverageYearsWorked.Tests
         public void Get_average_years_worked_at_company_with_one_employee()
         {
             var yesterday = Today.AddDays(-1);
-            var employee = new Employee("MyId", None, yesterday, Today);
+            var employee = new Employee("MyId", None, yesterday, LeftOn: Today);
 
             CompanyReport.ForDay(Today)
                          .AverageYearsWorkedAtTheCompany(new List<Employee>() { employee })
                          .Should()
-                         .Be((yesterday - Today).TotalDays);
+                         .Be(1);
         }
 
         [Fact]
@@ -24,12 +24,13 @@ namespace IMoreno.FunctionalExercises.AverageYearsWorked.Tests
         {
             var yesterday = Today.AddDays(-1);
             var tomorrow = Today.AddDays(1);
-            var employee = new Employee("MyId", None, JoinedOn: yesterday, LeftOn: tomorrow);
+            var exemployee = new Employee("MyId", None, JoinedOn: yesterday, LeftOn: tomorrow);
+            var employee = new Employee("MyId", None, JoinedOn: yesterday, LeftOn: None);
 
             CompanyReport.ForDay(Today)
-                         .AverageYearsWorkedAtTheCompany(new List<Employee>() { employee })
+                         .AverageYearsWorkedAtTheCompany(new List<Employee>() { exemployee, employee })
                          .Should()
-                         .Be(0);
+                         .Be(2);
         }
     }
 }

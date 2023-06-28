@@ -27,10 +27,13 @@ namespace IMoreno.FunctionalExercises.GetWorkPermit
                 => employee.LeftOn.Match
                 (
                     () => new List<double> { 0 },
-                    date => new List<double> { (employee.JoinedOn - date).TotalDays }
+                    date => new List<double> { (date - employee.JoinedOn).TotalDays }
                 );
 
-            return employees.Bind(TimeAtCompany)
+            bool DidLeftCompany(Employee employee) => employee.LeftOn != None;
+
+            return employees.Where(DidLeftCompany)
+                            .Bind(TimeAtCompany)
                             .Sum();
         }
 

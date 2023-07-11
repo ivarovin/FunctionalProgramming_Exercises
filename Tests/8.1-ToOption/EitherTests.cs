@@ -47,4 +47,16 @@ public class EitherTests
             )
             .Should().BeTrue();
     }
+
+    [Fact]
+    public void Convert_none_to_either()
+    {
+        new None<int>().ToEither<string, int>(() => "error")
+            .Match
+            (
+                left: value => true,
+                right: value => false
+            )
+            .Should().BeTrue();
+    }
 }

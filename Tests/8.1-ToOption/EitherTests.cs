@@ -1,4 +1,5 @@
 using FluentAssertions;
+using IMoreno.FunctionalExercises.Optional;
 
 namespace IMoreno.FunctionalExercises.ToOption.Tests;
 
@@ -26,5 +27,12 @@ public class EitherTests
             left: value => false,
             right: value => true
         ).Should().BeTrue();
+    }
+
+    [Fact]
+    public void Convert_either_to_option()
+    {
+        ((Either<string, int>)"error").ToOption().Should().BeOfType<None<int>>();
+        ((Either<string, int>)5).ToOption().Should().BeOfType<Some<int>>();
     }
 }

@@ -16,7 +16,7 @@ public class EitherTests
             right: value => false
         ).Should().BeTrue();
     }
-    
+
     [Fact]
     public void Convert_right_value_to_either_implicitly()
     {
@@ -34,5 +34,17 @@ public class EitherTests
     {
         ((Either<string, int>)"error").ToOption().Should().BeOfType<None<int>>();
         ((Either<string, int>)5).ToOption().Should().BeOfType<Some<int>>();
+    }
+
+    [Fact]
+    public void Convert_option_to_either()
+    {
+        new Some<int>(1).ToEither<string, int>(() => "error")
+            .Match
+            (
+                left: value => false,
+                right: value => true
+            )
+            .Should().BeTrue();
     }
 }

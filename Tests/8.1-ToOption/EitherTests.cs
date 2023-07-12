@@ -65,7 +65,7 @@ public class EitherTests
     [Fact]
     public void Chain_options_with_either_in_same_workflow()
     {
-        Option<int> GetPaid(int savings) => savings + 600;
+        Either<string, int> GetPaid(int savings) => savings + 600;
         Option<int> PayFood(int savings) => savings - 100;
         Option<int> PayRent(int savings) => savings - 1000;
 

@@ -1,6 +1,7 @@
 ﻿using static IMoreno.FunctionalExercises.Optional.OptionType;
 using IMoreno.FunctionalExercises.Optional;
 using System.Collections.Immutable;
+using IMoreno.FunctionalExercises.ToOption;
 
 namespace IMoreno.FunctionalExercises.BindAndReturn
 {
@@ -13,11 +14,18 @@ namespace IMoreno.FunctionalExercises.BindAndReturn
                 some: value => op(value)
             );
 
+        public static Option<R> Bind<R, L>(this Option<R> opt, Func<R, Either<L, R>> func)
+            => opt.Match
+            (
+                none: () => None,
+                some: value => func(value).ToOption()
+            );
+
         public static IEnumerable<R> Bind<T, R>(this IEnumerable<T> or, Func<T, IEnumerable<R>> op)
         {
             foreach (var item in or)
-                foreach (var result in op(item))
-                    yield return result;
+            foreach (var result in op(item))
+                yield return result;
         }
 
         public static IEnumerable<R> Map<T, R>(this IEnumerable<T> or, Func<T, R> op)

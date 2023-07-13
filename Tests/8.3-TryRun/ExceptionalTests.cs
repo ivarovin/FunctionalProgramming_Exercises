@@ -17,7 +17,7 @@ public class ExceptionalTests
     [Fact]
     public void TryRun()
     {
-        Exceptional<T> TryRun<T>(Func<T> op)
+        Exceptional<T> Mut<T>(Func<T> op)
         {
             try
             {
@@ -29,7 +29,7 @@ public class ExceptionalTests
             }
         }
 
-        TryRun<string>(() => throw new Exception("something"))
+        Mut<string>(() => throw new Exception("something"))
             .Match<Action>
             (
                 left: _ => () => Assert.True(true),

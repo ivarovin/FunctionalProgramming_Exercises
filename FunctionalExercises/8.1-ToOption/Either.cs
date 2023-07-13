@@ -1,3 +1,5 @@
+using IMoreno.FunctionalExercises.TryRun;
+
 namespace IMoreno.FunctionalExercises.ToOption;
 
 public class Either<L, R>

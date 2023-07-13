@@ -13,4 +13,27 @@ public class ExceptionalTests
             right: _ => () => Assert.True(false)
         );
     }
+
+    [Fact]
+    public void TryRun()
+    {
+        Exceptional<T> TryRun<T>(Func<T> op)
+        {
+            try
+            {
+                return op();
+            }
+            catch (Exception exception)
+            {
+                return exception;
+            }
+        }
+
+        TryRun<string>(() => throw new Exception("something"))
+            .Match<Action>
+            (
+                left: _ => () => Assert.True(true),
+                right: _ => () => Assert.True(false)
+            );
+    }
 }

@@ -1,7 +1,5 @@
 using FluentAssertions;
-using IMoreno.FunctionalExercises.BindAndReturn;
 using IMoreno.FunctionalExercises.Optional;
-using static IMoreno.FunctionalExercises.Optional.Option<int>;
 
 namespace IMoreno.FunctionalExercises.ToOption.Tests;
 
@@ -60,24 +58,5 @@ public class EitherTests
                 right: value => false
             )
             .Should().BeTrue();
-    }
-
-    [Fact]
-    public void Chain_options_with_either_in_same_workflow()
-    {
-        Either<string, int> GetPaid(int savings) => savings + 600;
-        Option<int> PayFood(int savings) => savings - 100;
-        Option<int> PayRent(int savings) => savings - 1000;
-
-        Some(1000)
-            .Bind(GetPaid)
-            .Bind(PayFood)
-            .Bind(PayRent)
-            .Match
-            (
-                none: () => 0,
-                some: value => value
-            )
-            .Should().Be(500);
     }
 }

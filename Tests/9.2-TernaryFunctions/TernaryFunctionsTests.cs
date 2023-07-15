@@ -13,4 +13,13 @@ public class TernaryFunctionsTests
         phoneNumber.Type.Should().Be(NumberType.Home);
         phoneNumber.Number.Should().Be(123456);
     }
+
+    [Fact]
+    public void Create_phone_number_from_country()
+    {
+        var ukNumber = new CountryCode("uk").CreatePhoneTemplate();
+
+        ukNumber(NumberType.Home, 123456)
+            .Country.Should().Be((CountryCode)"uk");
+    }
 }

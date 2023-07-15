@@ -22,4 +22,12 @@ public class TernaryFunctionsTests
         ukNumber(NumberType.Home, 123456)
             .Country.Should().Be((CountryCode)"uk");
     }
+
+    [Fact]
+    public void Create_phone_number_from_country_and_type()
+    {
+        var ukHomeNumber = new CountryCode("uk").CreatePhoneTemplate(NumberType.Home);
+
+        ukHomeNumber(123456).Type.Should().Be(NumberType.Home);
+    }
 }

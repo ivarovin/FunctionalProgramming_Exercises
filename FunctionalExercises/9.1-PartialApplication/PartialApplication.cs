@@ -1,4 +1,4 @@
-namespace FunctionalExercises._9._1_PartialApplication;
+namespace IMoreno.FunctionalExercises.PartialApplication;
 
 public static class PartialApplication
 {

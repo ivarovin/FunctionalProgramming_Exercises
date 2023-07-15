@@ -1,5 +1,4 @@
 using FluentAssertions;
-using FunctionalExercises._9._1_PartialApplication;
 
 namespace IMoreno.FunctionalExercises.PartialApplication.Tests;
 

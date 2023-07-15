@@ -4,13 +4,13 @@ namespace IMoreno.FunctionalExercises.PartialApplication.Tests;
 
 public class PartialApplicationTests
 {
-    public int RemainderOf(int dividend, int divisor) => dividend % divisor;
+    Func<int, int, int> RemainderOf => (dividend, divisor) => dividend % divisor;
 
     [Fact]
     public void Calculate_remainder_of_division()
     {
-        RemainderOf(dividend: 10, divisor: 2).Should().Be(0);
-        RemainderOf(dividend: 11, divisor: 2).Should().Be(1);
-        RemainderOf(dividend: 8, divisor: 3).Should().Be(2);
+        RemainderOf(10, 2).Should().Be(0);
+        RemainderOf(11, 2).Should().Be(1);
+        RemainderOf(8, 3).Should().Be(2);
     }
 }

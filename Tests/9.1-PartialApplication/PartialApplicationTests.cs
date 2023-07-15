@@ -24,4 +24,14 @@ public class PartialApplicationTests
         remainderOf5(7).Should().Be(2);
         remainderOf5(15).Should().Be(0);
     }
+
+    [Fact]
+    public void ApplyR_inverts_parameters_order()
+    {
+        var remainderOf5 = RemainderOf.ApplyR(10);
+
+        remainderOf5(3).Should().Be(1);
+        remainderOf5(5).Should().Be(0);
+        remainderOf5(-4).Should().Be(2);
+    }
 }

@@ -23,4 +23,15 @@ public class FunctionsEverywhereTests
 
         result.Should().Be("[WARNING] test");
     }
+
+    [Fact]
+    public void Log_error()
+    {
+        var result = "";
+
+        new Log(m => result = m).Error("test");
+
+        result.Should().Be("[ERROR] test");
+        
+    }
 }

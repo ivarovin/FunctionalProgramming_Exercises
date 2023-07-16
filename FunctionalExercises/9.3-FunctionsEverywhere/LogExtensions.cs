@@ -11,4 +11,9 @@ public static class LogExtensions
     {
         log.Show($"[WARNING] {message}");
     }
+    
+    public static void Error(this Log log, string message)
+    {
+        log.Show($"[ERROR] {message}");
+    }
 }

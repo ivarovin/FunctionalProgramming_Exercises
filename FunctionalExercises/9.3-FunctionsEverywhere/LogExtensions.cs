@@ -6,4 +6,9 @@ public static class LogExtensions
     {
         log.Show($"[INFO] {message}");
     }
+    
+    public static void Warning(this Log log, string message)
+    {
+        log.Show($"[WARNING] {message}");
+    }
 }

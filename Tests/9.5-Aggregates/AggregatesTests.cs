@@ -12,4 +12,13 @@ public class AggregatesTests
             .HaveCount(1)
             .And.Contain(2);
     }
+    
+    [Fact]
+    public void Bind_in_terms_of_aggregate()
+    {
+        new List<int> { 1 }.ABind(x => new List<int>{x * 2})
+            .Should()
+            .HaveCount(1)
+            .And.Contain(2);
+    }
 }

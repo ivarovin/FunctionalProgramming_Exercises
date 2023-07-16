@@ -15,4 +15,11 @@ public static class Aggregates
             acc.AddRange(f(x));
             return acc;
         });
+
+    public static IEnumerable<T> AWhere<T>(this IEnumerable<T> collection, Func<T, bool> f)
+        => collection.Aggregate(new List<T>(), (acc, x) =>
+        {
+            if (f(x)) acc.Add(x);
+            return acc;
+        });
 }

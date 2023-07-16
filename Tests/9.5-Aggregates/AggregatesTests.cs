@@ -21,4 +21,13 @@ public class AggregatesTests
             .HaveCount(1)
             .And.Contain(2);
     }
+
+    [Fact]
+    public void Where_in_terms_of_aggregate()
+    {
+        new List<int> { 1, 2 }.AWhere(x => x % 2 == 0)
+            .Should()
+            .HaveCount(1)
+            .And.Contain(2);
+    }
 }

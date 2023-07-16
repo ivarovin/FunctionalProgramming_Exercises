@@ -32,6 +32,5 @@ public class FunctionsEverywhereTests
         new Log(m => result = m).Error("test");
 
         result.Should().Be("[ERROR] test");
-        
     }
 }

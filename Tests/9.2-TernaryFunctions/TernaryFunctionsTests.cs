@@ -26,7 +26,7 @@ public class TernaryFunctionsTests
     [Fact]
     public void Create_phone_number_from_country_and_type()
     {
-        var ukHomeNumber = new CountryCode("uk").CreatePhoneTemplate(NumberType.Home);
+        var ukHomeNumber = new CountryCode("uk").CreatePhoneTemplate().WithType(NumberType.Home);
 
         ukHomeNumber(123456).Type.Should().Be(NumberType.Home);
     }

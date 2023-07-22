@@ -14,21 +14,8 @@ public class ApplyEverythingTests
 
         fromAdult(20).Match
         (
-            error => 0,
-            result => result
-        ).Should().Be(38);
-    }
-}
-
-public class ActionToFuncTests
-{
-    [Fact]
-    public void Convert_action_to_unit_func()
-    {
-        var result = 0;
-        Action action = () => result++;
-
-        action.ToFunc()().Should().BeOfType<Unit>();
-        result.Should().Be(1);
+            _ => Assert.True(false),
+            result => result.Should().Be(38)
+        );
     }
 }

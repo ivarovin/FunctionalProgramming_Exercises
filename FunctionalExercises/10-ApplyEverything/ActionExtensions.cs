@@ -8,4 +8,11 @@ public static class ActionExtensions
             action();
             return default;
         };
+    
+    public static Func<T,Unit> ToFunc<T>(this Action<T> action)
+        => (t) =>
+        {
+            action(t);
+            return default;
+        };
 }

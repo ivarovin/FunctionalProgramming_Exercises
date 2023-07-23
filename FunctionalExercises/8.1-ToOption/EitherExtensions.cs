@@ -20,9 +20,23 @@ public static class EitherExtensions
         );
 
     public static Either<L, RR> Select<L, R, RR>(this Either<L, R> either, Func<R, RR> f)
-        => either.Match<Either<L,RR>>
+        => either.Match<Either<L, RR>>
         (
             left: value => value,
             right: value => f(value)
         );
+
+    public static Either<L, R3> SelectMany<L, R1, R2, R3>(this Either<L, R1> either, Func<R1, Either<L, R2>> f,
+        Func<R1, R2, R3> project)
+    {
+        return either.Match<Either<L, R3>>
+        (
+            left: value => value,
+            right: t => f(t).Match<Either<L, R3>>
+            (
+                left: value => value,
+                right: r => project(t, r)
+            )
+        );
+    }
 }

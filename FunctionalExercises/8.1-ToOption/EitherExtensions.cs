@@ -13,9 +13,16 @@ public static class EitherExtensions
         );
 
     public static Either<L, R> ToEither<L, R>(this Option<R> opt, Func<L> ifNone)
-        => opt.Match<R, Either<L,R>>
+        => opt.Match<R, Either<L, R>>
         (
             none: () => ifNone(),
             some: value => value
+        );
+
+    public static Either<L, RR> Select<L, R, RR>(this Either<L, R> either, Func<R, RR> f)
+        => either.Match<Either<L,RR>>
+        (
+            left: value => value,
+            right: value => f(value)
         );
 }

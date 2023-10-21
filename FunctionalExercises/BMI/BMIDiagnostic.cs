@@ -11,5 +11,7 @@
             >= overweight => "overweight",
             _ => "healty"
         };
+        
+        public static implicit operator string(BMIDiagnostic diagnostic) => diagnostic.Value;
     }
 }

@@ -14,11 +14,6 @@
             this.formulary = formulary;
         }
 
-        public void Execute()
-        {
-            var result = new BMIDiagnostic((Weight, Height));
-
-            screen.Display(result.Value);
-        }
+        public void Execute() => screen.Display(new BMIDiagnostic((Weight, Height)));
     }
 }
